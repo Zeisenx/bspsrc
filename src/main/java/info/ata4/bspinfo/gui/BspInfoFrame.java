@@ -70,7 +70,7 @@ public class BspInfoFrame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main2(String args[]) {
         LogUtils.configure();
 
         // set the system look and feel
@@ -177,13 +177,16 @@ public class BspInfoFrame extends javax.swing.JFrame {
             public void run() {
                 // clear form fields
                 reset();
-
                 // set waiting cursor
                 setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
                 try {
                     // load BSP file
                     bspFile = new BspFile();
+
+                    System.out.println(currentFile);
+                    System.out.println(currentFile.toPath());
+
                     bspFile.load(currentFile.toPath());
 
                     boolean compressed = bspFile.isCompressed();
